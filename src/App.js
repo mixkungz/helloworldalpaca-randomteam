@@ -29,12 +29,17 @@ const Container = styled.div`
   left:0;
 `
 const Mountain = styled.div`
-  background: url(${mountainElement});
-  max-width:15%;
+  background-image: url(${mountainElement});
   min-width:100vw;
-  min-height:10vh;
+  min-height: 25vh;
+  background-size: 100%;
+  background-repeat: round;
 `
 injectGlobal`
+  html{
+    width:100%;
+    height:100%;
+  }
   body{
     background:#e8f8fd;
   }
@@ -42,7 +47,7 @@ injectGlobal`
     max-width:100%;
   }
   .alpaca{
-    max-width:20%;
+    max-width:15%;
   }
 `
 class App extends Component {
