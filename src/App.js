@@ -29,10 +29,10 @@ const Container = styled.div`
   left:0;
 `
 const Mountain = styled.div`
-  background: url(${mountainElement});
-  max-width:15%;
+  background-image: url(${mountainElement});
   min-width:100vw;
-  min-height:10vh;
+  min-height: 25vh;
+  background-size: 100%;
 `
 injectGlobal`
   body{
@@ -45,14 +45,12 @@ injectGlobal`
     max-width:20%;
   }
 `
+
 class App extends Component {
   
   componentWillUnmount() {
-    const scene = document.getElementById('scene');
-    const parallaxInstance = new Parallax(scene);
-    parallaxInstance.friction(0.2, 0.2);
-    
   }
+  
   componentDidMount() {
     const scene = document.getElementById('scene');
     const parallaxInstance = new Parallax(scene);
@@ -69,7 +67,7 @@ class App extends Component {
 
   render() {
     return (
-      <div data-relative-input="true" id="scene">
+      <div>
         <Container data-relative-input="true" id="scene">
           <Footer data-depth="0.6">
             <img className="alpaca" data-depth="0.2" src={ require('./static/img/alpacamood-01.png') } />
