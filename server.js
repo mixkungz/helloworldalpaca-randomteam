@@ -1,11 +1,20 @@
+// --------------------
+//    ENV FILE CONFIG
+// --------------------
 require('dotenv').config()
 
+// -----------------------
+//   IMPORT DEPENDENCIES
+// -----------------------
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const path = require('path')
 
+// ----------------------
+//     INITIAL SERVER
+// ----------------------
 const server = express()
 server.use(cors())
 server.use(cookieParser())
