@@ -26,11 +26,17 @@ injectGlobal`
 `
 class ChooseBox extends Component{
     state = {
-        team : ["Front-End","Design","Game","Infra"]
+        team : ["Front-End","Design","Game","Infra"],
+        canSelect: true
     }
     onClickBtn = (team) =>{
-        switch(team){
+        if(this.state.canSelect) {
+            // switch(team){
+    
+            // }
 
+        } else {
+            alert(`can't select team`)
         }
     }
     render(){
