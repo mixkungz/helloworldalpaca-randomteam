@@ -1,6 +1,9 @@
 import React , { Component } from 'react';
 import styled , {injectGlobal} from 'styled-components';
 
+import io from 'socket.io-client'
+const socket = io('http://localhost:3003')
+
 const Box = styled.div`
     position: fixed;
     top: 30%;
@@ -26,26 +29,27 @@ injectGlobal`
 `
 class ChooseBox extends Component{
     state = {
-        team : ["Front-End","Design","Game","Infra"],
+        team : ["developer","Design","Game","Infra"],
         canSelect: true
     }
     onClickBtn = (team) =>{
-        if(this.state.canSelect) {
-            // switch(team){
-    
-            // }
-
-        } else {
-            alert(`can't select team`)
-        }
+        // if(this.state.canSelect) {
+            socket.emit('random', team)
+            this.setState({canSelect: false})
+        // } else {
+            // alert(`can't select team`)
+        // }
     }
+    componentWillMount() {
+    }
+
     render(){
         return(
             <div>
                 <Box>
                     {
                         this.state.team.map(team => (
-                            <button className="btn btn-outline-dark btn-block">{team}</button>
+                            <button key={team} className="btn btn-outline-dark btn-block" id={team} onClick={(e) => this.onClickBtn(e.target.id)}>{team}</button>
                         ))
                     }
                     
