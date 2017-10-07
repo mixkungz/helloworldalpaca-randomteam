@@ -21,14 +21,24 @@ server.use(cookieParser())
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 
-const port = 3001
-// LISTEN PORT 3001
-var app = server.listen(port, (err) => {
+// api
+const routes = require('./server/routes.js')
+server.use('/api/v1', routes)
+
+if (process.env.NODE_ENV === 'PRODUCTION') {
+  server.use(express.static(path.resolve(__dirname, '.', 'build')))
+  server.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+}
+
+// listen port 3003
+var app = server.listen(3003, (err) => {
   if (err) throw err
-  console.log(`> Ready on http://localhost:${port}`)
+  console.log('> Ready on http://localhost:3003')
 })
 
-// INITIAL SOCKET.IO
+// socket.io
 const io = require('socket.io').listen(app)
 server.io = io
 require('./server/services/socket')(io)

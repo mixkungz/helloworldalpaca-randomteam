@@ -1,6 +1,3 @@
-var Player = require("../../src/player").Player;
-var count = 0
-var players = []
 var team = {
     frontend: [
         ['bas', 0],
@@ -16,13 +13,12 @@ var team = {
     ]
 }
 
-module.exports = function(io) {
-    io.on('connection', function(socket) {
+module.exports = (io) => {
+  io.on('connection', function(socket) {
+    console.log('socket connected')
 
-        socket.on('room', function() {
-            io.emit('getallplayer', players)
-        })
-
-        
+    socket.on('random', (room) => {
+      console.log('random')
     })
-  }
+  })
+}
