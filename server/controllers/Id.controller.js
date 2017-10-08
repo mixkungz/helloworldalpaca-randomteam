@@ -5,6 +5,36 @@ let members = []
 team = ["Front-End","Design","Game","Infra"]
 
 module.exports = {
+<<<<<<< HEAD
+  resetId: async (req, res) => {
+    let allId
+
+    if (req.body.key==='hellofrontend') {
+      allId = await Id.reset(1)
+    } else {
+      res.json({
+        status: false,
+        message: 'error, reset failed.'
+      })
+    }
+
+    console.log(allId)
+    res.json({
+      status: true,
+      id: allId
+    })
+  },
+  getIdById: async (req, res) => {
+    let id = +req.params.id
+    let resolveId
+    if (count[id]<3) {
+      count[id]++
+      resolveId = await Id.getOne(id-1)
+    } else {
+      count[0]++
+      resolveId = 0
+    }
+=======
   getTeamFrontEnd: async (req, res) => {
 
       let full = true
@@ -80,6 +110,7 @@ module.exports = {
         })
       }
     
+>>>>>>> f33cb3bb0e15d706495996055c9b6b7f3bf74861
 
   },
   getAll: async (req, res) => {
