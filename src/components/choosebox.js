@@ -44,6 +44,9 @@ class ChooseBox extends Component{
         //     console.log(JSON.stringify(data, null, 2))
         // })
     }
+    randomTeam = () =>{
+        return Math.floor((Math.random()*10)+1);
+    }
     onClickBtn = async (team) =>{
         let teams = this.state.team
         let url = '//localhost:3003/api/v1/random/'
@@ -52,6 +55,7 @@ class ChooseBox extends Component{
         if(name.length < 3) {
             alert('please insert name more than 3 character!')
         }else if(check) {
+            alert(this.randomTeam());
             switch(team){
                 case teams[0]:
                     url += `${teams[0]}/${name}`
