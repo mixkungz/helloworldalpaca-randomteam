@@ -3,6 +3,24 @@ const Id = require('../models/Id.model')
 let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 module.exports = {
+  resetId: async (req, res) => {
+    let allId
+
+    if (req.body.key==='hellofrontend') {
+      allId = await Id.reset(1)
+    } else {
+      res.json({
+        status: false,
+        message: 'error, reset failed.'
+      })
+    }
+
+    console.log(allId)
+    res.json({
+      status: true,
+      id: allId
+    })
+  },
   getIdById: async (req, res) => {
     let id = +req.params.id
     let resolveId
